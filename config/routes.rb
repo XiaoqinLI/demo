@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   root :to => "welcome#index"
 
-  resources :events
+  resources :events do
+    resources :attendees, :controller => 'event_attendees'
+  end
 
   # match ':controller(/:action(/:id(.:format)))', :via => :all
   # The priority is based upon order of creation: first created -> highest priority.
