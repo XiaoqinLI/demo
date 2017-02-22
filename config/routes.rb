@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
+    get "welcome/say_hello" => "welcome#say"
 
-  get "welcome/say_hello" => "welcome#say"
+    get "welcome" => "welcome#index"
 
-  get "welcome" => "welcome#index"
+    root :to => "welcome#index"
 
-  root :to => "welcome#index"
+    resources :events do
+        resources :attendees, :controller => 'event_attendees'
+    end
 
-  resources :events do
-    resources :attendees, :controller => 'event_attendees'
-  end
+    resources :events do
+        resource :location, :controller => 'event_locations'
+    end
 
   # match ':controller(/:action(/:id(.:format)))', :via => :all
   # The priority is based upon order of creation: first created -> highest priority.
