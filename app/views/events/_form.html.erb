@@ -4,6 +4,7 @@
 <%= f.label :description, "Description" %>
 <%= f.text_field :description %>
 
+<%= f.collection_select(:category_id, Category.all, :id, :name) %>
 
 <% if @event.errors.any? %>
 	<ul>
